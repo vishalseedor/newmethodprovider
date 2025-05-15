@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context)=>Melasprovider())
+        
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

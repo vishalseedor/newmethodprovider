@@ -16,11 +16,12 @@ class Melasprovider with ChangeNotifier {
   }
 
   Future<void> getMelasdata(BuildContext context) async {
-    print('Fetching view_categories API');
+    print('Fetching view_meals API');
     _isloading = true;
+    final url =  'https://www.themealdb.com/api/json/v1/1/filter.php?a=Canadian';
     try {
-      final responce = await https.get(Uri.parse(
-          'https://www.themealdb.com/api/json/v1/1/filter.php?a=Canadian'));
+      final responce = await https.get(Uri.parse(url)
+        );
       List<dynamic> extracteddata = jsonDecode(responce.body)['meals'];
       _meals = extracteddata
           .map((fields) => MealsModel(

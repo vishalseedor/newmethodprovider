@@ -11,12 +11,11 @@ class CategoryScreen extends StatefulWidget {
 }
 
 class _CategoryScreenState extends State<CategoryScreen> {
-@override
-void initState(){
-  Provider.of<Melasprovider>(context,listen: false).getMelasdata(context);
-  super.initState();
-}
-
+  @override
+  void initState() {
+    Provider.of<Melasprovider>(context, listen: false).getMelasdata(context);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,18 +33,26 @@ void initState(){
           ),
         ),
       ),
-     body: mealsProvider.isloading?CircularProgressIndicator(color: Colors.amber):SizedBox(child: 
-     
-     
-     GridView.builder(
-      itemCount: mealsProvider.meals.length,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-      itemBuilder: (context, index) {
-        
-        return melasWidget(id: mealsProvider.meals[index].idMeal,
-         name: mealsProvider.meals[index].strMeal,
-          image: mealsProvider.meals[index].strMealThumb);
-      },),
-      )  );
+      body:
+          mealsProvider.isloading
+              ? CircularProgressIndicator(color: Colors.amber)
+              : mealsProvider.meals.isEmpty
+              ? Center(child: Text('No Meals Products'))
+              : SizedBox(
+                child: GridView.builder(
+                  itemCount: mealsProvider.meals.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                  ),
+                  itemBuilder: (context, index) {
+                    return melasWidget(
+                      id: mealsProvider.meals[index].idMeal,
+                      name: mealsProvider.meals[index].strMeal,
+                      image: mealsProvider.meals[index].strMealThumb,
+                    );
+                  },
+                ),
+              ),
+    );
   }
 }
