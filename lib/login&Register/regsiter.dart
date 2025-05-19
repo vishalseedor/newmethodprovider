@@ -29,96 +29,98 @@ class _RegisterState extends State<Register> {
           style: TextStyle(color: Colors.white, fontSize: 18),
         ),
       ),
-      body: Consumer<AuthProvider>(
-        builder: (context,provider,_){
-          return provider.isLoading?CircularProgressIndicator():
-          Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Form(
-            key: _formkey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                registerForm(
-                  hinttext: 'Name',
-                  icon: Icons.person,
-                  controller: namecontroller,
-                  validator: (value) {
-                    if (namecontroller.text.isEmpty) {
-                      return 'Please enter your name';
-                    } else {
-                      return null;
-                    }
-                  },
-                ),
-                 registerForm(
-                  hinttext: 'Phone',
-                  icon: Icons.phone_android,
-                  controller: phonecontroller,
-                  validator: (value) {
-                    if (phonecontroller.text.isEmpty) {
-                      return 'Please enter your phone';
-                    } else {
-                      return null;
-                    }
-                  },
-                ),
-                 registerForm(
-                  hinttext: 'Email',
-                  icon: Icons.email,
-                  controller: emailcontroller,
-                  validator: (value) {
-                    if (emailcontroller.text.isEmpty) {
-                      return 'Please enter your email';
-                    } else {
-                      return null;
-                    }
-                  },
-                ),
-                 registerForm(
-                  hinttext: 'Password',
-                  icon: Icons.lock,
-                  controller: passwordcontroller,
-                  validator: (value) {
-                    if (passwordcontroller.text.isEmpty) {
-                      return 'Please enter your password';
-                    } else {
-                      return null;
-                    }
-                  },
-                ),
-                 registerForm(
-                  hinttext: 'Address',
-                  icon: Icons.location_on,
-                  controller: addresscontroller,
-                  validator: (value) {
-                    if (addresscontroller.text.isEmpty) {
-                      return 'Please enter your address';
-                    } else {
-                      return null;
-                    }
-                  },
-                ),
-                registerButton(title: 'Register', color: Colors.amber, ontap:(){
-                  if(_formkey.currentState!.validate()){
-                  Provider.of<AuthProvider>(context, listen: false).userlogin(
-            context,
-            name: namecontroller.text.trim(),
-            phone: phonecontroller.text.trim(),
-            email: emailcontroller.text.trim(),
-            password: passwordcontroller.text.trim(),
-            address: addresscontroller.text.trim(),
-          );
-        
-                  }
+      body: SingleChildScrollView(
+        child: Consumer<AuthProvider>(
+          builder: (context,provider,_){
+            return provider.isLoading?CircularProgressIndicator():
+            Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Form(
+              key: _formkey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  registerForm(
+                    hinttext: 'Name',
+                    icon: Icons.person,
+                    controller: namecontroller,
+                    validator: (value) {
+                      if (namecontroller.text.isEmpty) {
+                        return 'Please enter your name';
+                      } else {
+                        return null;
+                      }
+                    },
+                  ),
+                   registerForm(
+                    hinttext: 'Phone',
+                    icon: Icons.phone_android,
+                    controller: phonecontroller,
+                    validator: (value) {
+                      if (phonecontroller.text.isEmpty) {
+                        return 'Please enter your phone';
+                      } else {
+                        return null;
+                      }
+                    },
+                  ),
+                   registerForm(
+                    hinttext: 'Email',
+                    icon: Icons.email,
+                    controller: emailcontroller,
+                    validator: (value) {
+                      if (emailcontroller.text.isEmpty) {
+                        return 'Please enter your email';
+                      } else {
+                        return null;
+                      }
+                    },
+                  ),
+                   registerForm(
+                    hinttext: 'Password',
+                    icon: Icons.lock,
+                    controller: passwordcontroller,
+                    validator: (value) {
+                      if (passwordcontroller.text.isEmpty) {
+                        return 'Please enter your password';
+                      } else {
+                        return null;
+                      }
+                    },
+                  ),
+                   registerForm(
+                    hinttext: 'Address',
+                    icon: Icons.location_on,
+                    controller: addresscontroller,
+                    validator: (value) {
+                      if (addresscontroller.text.isEmpty) {
+                        return 'Please enter your address';
+                      } else {
+                        return null;
+                      }
+                    },
+                  ),
+                  registerButton(title: 'Register', color: Colors.amber, ontap:(){
+                    if(_formkey.currentState!.validate()){
+                    Provider.of<AuthProvider>(context, listen: false).userlogin(
+              context,
+              name: namecontroller.text.trim(),
+              phone: phonecontroller.text.trim(),
+              email: emailcontroller.text.trim(),
+              password: passwordcontroller.text.trim(),
+              address: addresscontroller.text.trim(),
+            );
           
-                })
-              ],
+                    }
+            
+                  })
+                ],
+              ),
             ),
-          ),
-        );
-        }
-        
+          );
+          }
+          
+        ),
       ),
     );
   }

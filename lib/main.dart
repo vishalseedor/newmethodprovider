@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:new_provider_code/login&Register/provider/registerprovider.dart';
 import 'package:new_provider_code/login&Register/regsiter.dart';
 import 'package:new_provider_code/new_provider/api.dart';
-import 'package:new_provider_code/new_provider/screen.dart';
 import 'package:provider/provider.dart';
 
 void main(){
